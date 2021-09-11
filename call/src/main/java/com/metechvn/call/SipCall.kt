@@ -28,8 +28,8 @@ class SipCall {
         val params: CallParams? = LinphoneService.getCore()?.createCallParams(null)
         params?.enableAudio(true)
         if (addressToCall != null) {
-            LinphoneService.getCore()?.defaultProxyConfig?.setCustomHeader("X-Call-Id", call_id)
-            LinphoneService.getCore()?.defaultProxyConfig?.setCustomHeader("X-User-Id", user_id)
+            params?.addCustomHeader("X-Call-Id", call_id)
+            params?.addCustomHeader("X-User-Id", user_id)
             LinphoneService.getCore()?.inviteAddressWithParams(addressToCall, params)
         }
     }
